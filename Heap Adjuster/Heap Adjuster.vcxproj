@@ -9,9 +9,11 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Hooking.Patterns.cpp" />
+    <ClCompile Include="Globals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\dllmain.h" />
+    <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\Hooking.Patterns.h" />
   </ItemGroup>
   <ItemGroup>
@@ -32,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
