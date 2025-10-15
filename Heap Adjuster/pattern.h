@@ -1,13 +1,14 @@
+/* Pattern class from https://github.com/CamxxCore/PauseMenuHelper */
+
 #pragma once
 
 #include <Psapi.h>
-#include <wtypes.h>
 
 template <typename T>
 class Pattern
 {
 public:
-	Pattern(const BYTE* bMask, const char* szMask) : bMask(bMask), szMask(szMask)
+	Pattern(const BYTE* bMask, const char* szMask) : bMask(bMask), szMask(szMask) 
 	{
 		bSuccess = findPattern();
 	}
@@ -26,7 +27,7 @@ private:
 
 		GetModuleInformation(GetCurrentProcess(), GetModuleHandle(nullptr), &module, sizeof(MODULEINFO));
 
-		auto* address = reinterpret_cast<BYTE*>(module.lpBaseOfDll);
+		auto *address = reinterpret_cast<BYTE*>(module.lpBaseOfDll);
 
 		auto address_end = address + module.SizeOfImage;
 
@@ -51,13 +52,13 @@ private:
 		return (*szMask) == NULL;
 	}
 
-	const BYTE* bMask; const char* szMask;
+	const BYTE *bMask; const char* szMask;
 	T pResult;
 };
 
 class BytePattern : public Pattern<BYTE*>
 {
 public:
-	BytePattern(const BYTE* bMask, const char* szMask) :
+	BytePattern(const BYTE* bMask, const char* szMask) : 
 		Pattern<BYTE*>(bMask, szMask) {}
 };
