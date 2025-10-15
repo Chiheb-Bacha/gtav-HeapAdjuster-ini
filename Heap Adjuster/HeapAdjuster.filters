@@ -9,12 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Source Files\Native">
-      <UniqueIdentifier>{e8c7500f-5997-4d5b-868f-f415caef2f1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Native">
-      <UniqueIdentifier>{402fe010-123f-4707-9a80-656ff17fed82}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
