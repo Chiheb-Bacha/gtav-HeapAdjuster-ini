@@ -2,13 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include "Globals.h"
-
-// working around a bug in Hooking.Patterns x64 version
-template<typename T = void>
-auto get_pattern(const char* pattern_string, ptrdiff_t offset = 0)
-{
-	return hook::pattern(pattern_string).get_first<T>(offset);
-}
+#include "pattern.h"
+#include <string>
 
 int heapSize = GetPrivateProfileInt("HEAP_SETTINGS", "HEAP_SIZE", 1024, ".\\HeapAdjuster.ini");
 int vanillaHeapSize;
@@ -25,22 +20,25 @@ void Logging()
 
 void InitializeMod()
 {
-	int* loc;
-	if (g_isEnhanced)
+
+	
+	BYTE* loc;
+	if (true)
 	{
-		loc = hook::get_pattern<int32_t>("ba ? ? ? ? 45 31 c0 41 b1 01 e8 ? ? ? ? 48 8d 0d", 1);
+		loc = BytePattern((BYTE*)"\xBA\x00\x00\x00\x00\x45\x31\xC0\x41\xB1\x01\xE8\x00\x00\x00\x00\x48\x8D\x0D", "x????xxxxxxx????xxx").get(1);
 	}
 	else
 	{
-		loc = hook::get_pattern<int32_t>("83 C8 01 48 8D 0D ? ? ? ? 41 B1 01 45 33 C0", 17);
+		loc = BytePattern((BYTE*)"\x83\xC8\x01\x48\x8D\x0D\x00\x00\x00\x00\x41\xB1\x01\x45\x33\xC0", "xxxxxx????xxxxxx").get(17);
 	}
 
-	vanillaHeapSize = *loc / 1024 / 1024;
+	vanillaHeapSize = *(int*)loc / 1024 / 1024;
 
 	DWORD oldProtect;
+
 	VirtualProtect(loc, 4, PAGE_EXECUTE_READWRITE, &oldProtect);
 
-	*loc = heapSize * 1024 * 1024;
+	*(int*)loc = heapSize * 1024 * 1024;
 	// default in 889.22 Enhanced was 648MiB, 
 	// default in v3586.0 Legacy was 478MiB
 

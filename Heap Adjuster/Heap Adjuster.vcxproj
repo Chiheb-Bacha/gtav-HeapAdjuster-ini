@@ -8,13 +8,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Hooking.Patterns.cpp" />
     <ClCompile Include="Globals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\dllmain.h" />
     <ClInclude Include="include\Globals.h" />
-    <ClInclude Include="include\Hooking.Patterns.h" />
+    <ClInclude Include="include\pattern.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="HeapAdjuster.ini">
@@ -63,6 +62,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FloatingPointModel>Fast</FloatingPointModel>
       <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
